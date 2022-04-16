@@ -193,3 +193,12 @@ body {
     left: 15%;
 
 }
+
+.position-text {
+    position: absolute;
+    top: 65%;
+    left: 19%;
+    font-size: 2rem;
+    color: white;
+
+}
