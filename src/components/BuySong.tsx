@@ -3,6 +3,7 @@ import {obj} from "../assets/hashes/JSONArray"
 
 async function pay(song) {
   const webln = await requestProvider();
+  console.log(webln);
   if(!webln) {
     return;
   }
@@ -13,21 +14,15 @@ async function pay(song) {
         console.log(webln)
 
         console.log(song);
-
       
-       
-
-    
-       const jsonObject= JSON.stringify(obj);
-
-        console.log(jsonObject);
-
         //// Metadata json array which must be presented as raw string here, this is required to pass signature verification at a later step
         /// we need way to convert json array into raw string, decode it on wallet side and then render it.
         //https://github.com/fiatjaf/lnurl-rfc/blob/luds/06.md type of metadata that is also to be decided
 
-        return webln.sendPayment('lnbcrt10u1p39jjrfpp5dce0tymtecuh9waff5hcyh0gtvwunm33p0fntmc7phh49v4sauwsdq2wpshvctwdgcqzpgxqyz5vqsp5nt8ljsfzjm02g2hfr9qynx3wv4hpc5mx9tzzq3hzu2x29e5mcxwq9qyyssqt5lw8h5l8mhlx8hje73yldhm6farzc3jkdz55y2x3ymttftaczm5jh6jes07a2ccd23pu2pp6n86wy4zne6hfw4w6x4yppc82v6krugq9fyqrg', jsonObject)
+        return webln.sendPayment('lnbcrt1u1p3vq5ldpp596pv8kgtg4xvhfcswzkulhyls8r2vlkzm3utlyegs3w53u8jx76qdqdwdhkueeqvf6hjcqzpgxqyz5vqsp5hk0sqjfzg8u06rqqwlm0d66w0awvwc9rvv9g05u9yzsa3xfk9a3q9qyyssqtj7ks8vuf795q4rfsths5qjy9n2ryf7qk5n8x90tvgta6z0xtuyywlel6xktxajakawld8a5phyqk2p98se6qyumrft99q00mcq4wecq00w72g', obj)
           .then(function(r) {
+            
+            if(r != undefined){
             document.getElementById('content').innerHTML = "YAY, thanks!";
             const timeout = document.getElementById('content')
             setTimeout(hideElement, 5000) //milliseconds until timeout//
@@ -43,9 +38,7 @@ async function pay(song) {
   a.click()
   document.body.removeChild(a)
 
-
-      
-         
+          }
           })
           .catch(function(e) {
             alert("Failed: " + e.message);

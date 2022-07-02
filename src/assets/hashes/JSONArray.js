@@ -1,8 +1,14 @@
 
-var obj = [[]];
+var obj = {}
 export function JsonArrayConstructor(image, title,artist){
 
-     obj = [["image", image],["title", title],["artist",artist]];
+     obj = {
+          "@context": "https://schema.org",
+          "@type": "AudioObject",
+          "name": title,
+          "creator": artist,
+          "image": image         
+        }
 
 
 }
