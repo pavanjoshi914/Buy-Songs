@@ -3,8 +3,7 @@ var obj = {}
 export function JsonArrayConstructor(image, title,artist){
 
      obj = {
-          "@context": "https://schema.org",
-          "@type": "AudioObject",
+          "type": "AudioObject",
           "name": title,
           "creator": artist,
           "image": image         
