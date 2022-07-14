@@ -1,7 +1,17 @@
 import { requestProvider } from '../utils/webln/client';
 import {obj} from "../assets/hashes/JSONArray"
+import {requestInvoice} from "lnurl-pay";
+import { Satoshis } from 'lnurl-pay/dist/types/types';
 
 async function pay(song) {
+  const tokenvalue: Satoshis = 10 as Satoshis;
+  const { invoice, params, successAction, validatePreimage } =
+  await requestInvoice({
+    lnUrlOrAddress: "pavanj@getalby.com",
+    tokens: tokenvalue,
+    comment: "Buy Song",
+  });
+
   const webln = await requestProvider();
   console.log(webln);
   if(!webln) {
@@ -19,7 +29,7 @@ async function pay(song) {
         /// we need way to convert json array into raw string, decode it on wallet side and then render it.
         //https://github.com/fiatjaf/lnurl-rfc/blob/luds/06.md type of metadata that is also to be decided
 
-        return webln.sendPayment('lnbcrt1u1p3vq5ldpp596pv8kgtg4xvhfcswzkulhyls8r2vlkzm3utlyegs3w53u8jx76qdqdwdhkueeqvf6hjcqzpgxqyz5vqsp5hk0sqjfzg8u06rqqwlm0d66w0awvwc9rvv9g05u9yzsa3xfk9a3q9qyyssqtj7ks8vuf795q4rfsths5qjy9n2ryf7qk5n8x90tvgta6z0xtuyywlel6xktxajakawld8a5phyqk2p98se6qyumrft99q00mcq4wecq00w72g', obj)
+        return webln.sendPayment(invoice, obj)
           .then(function(r) {
             
             if(r != undefined){
