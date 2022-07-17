@@ -1,11 +1,11 @@
 import { requestProvider } from '../utils/webln/client';
 import {obj} from "../assets/hashes/JSONArray"
-import {requestInvoice} from "lnurl-pay";
-import { Satoshis } from 'lnurl-pay/dist/types/types';
+import {requestInvoice} from '../lnurl-pay/request-invoice';
+import { Satoshis } from '../lnurl-pay/types';
 
 async function pay(song) {
   const tokenvalue: Satoshis = 10 as Satoshis;
-  const { invoice, params, successAction, validatePreimage } =
+  const { invoice } =
   await requestInvoice({
     lnUrlOrAddress: "pavanj@getalby.com",
     tokens: tokenvalue,

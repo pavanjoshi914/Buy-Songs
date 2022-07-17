@@ -104,6 +104,9 @@ module.exports = function (webpackEnv) {
 
   const shouldUseReactRefresh = env.raw.FAST_REFRESH;
 
+
+  
+
   // common function to get style loaders
   const getStyleLoaders = (cssOptions, preProcessor) => {
     const loaders = [
@@ -199,6 +202,17 @@ module.exports = function (webpackEnv) {
     // These are the "entry points" to our application.
     // This means they will be the "root" imports that are included in JS bundle.
     entry: paths.appIndexJs,
+
+    plugins: [
+      // Work around for Buffer is undefined:
+      // https://github.com/webpack/changelog-v5/issues/10
+      new webpack.ProvidePlugin({
+          Buffer: ['buffer', 'Buffer'],
+      }),
+      new webpack.ProvidePlugin({
+          process: 'process/browser',
+      }),
+  ],
     output: {
       // The build folder.
       path: paths.appBuild,
@@ -292,7 +306,17 @@ module.exports = function (webpackEnv) {
     },
     resolve: {
       
-      fallback : {"stream": require.resolve("stream-browserify")},
+      fallback : {"stream": require.resolve("stream-browserify"),
+    
+        "buffer": require.resolve("buffer/")
+    
+    },
+
+    alias: {
+      "process": "process/browser",
+      "buffer": "buffer",
+      "stream": "stream-browserify"
+   } ,
       // This allows you to set a fallback for where webpack should look for modules.
       // We placed these paths second because we want `node_modules` to "win"
       // if there are any conflicts. This matches Node resolution mechanism.
@@ -319,6 +343,11 @@ module.exports = function (webpackEnv) {
           'scheduler/tracing': 'scheduler/tracing-profiling',
         }),
         ...(modules.webpackAliases || {}),
+
+    
+        "buffer": "buffer",
+        "stream": "stream-browserify"
+        
       },
       plugins: [
         // Prevents users from importing files from outside of src/ (or node_modules/).
@@ -326,6 +355,8 @@ module.exports = function (webpackEnv) {
         // To fix this, we prevent you from importing files out of src/ -- if you'd like to,
         // please link the files into your node_modules/ and let module-resolution kick in.
         // Make sure your source files are compiled, as they will not be processed in any way.
+
+        
         
         new ModuleScopePlugin(paths.appSrc, [
           paths.appPackageJson,
