@@ -1,8 +1,8 @@
 
-var obj = {}
+var metadata = {}
 export function JsonArrayConstructor(image, title,artist){
 
-     obj = {
+     metadata = {
           "type": "AudioObject",
           "name": title,
           "creator": artist,
@@ -12,4 +12,4 @@ export function JsonArrayConstructor(image, title,artist){
 
 }
 
-export var obj;
+export var metadata;
