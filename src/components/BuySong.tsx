@@ -1,5 +1,5 @@
 import { requestProvider } from '../utils/webln/client';
-import {obj} from "../assets/hashes/JSONArray"
+import { metadata }  from "../assets/hashes/JSONArray"
 import {requestInvoice} from '../lnurl-pay/request-invoice';
 import { Satoshis } from '../lnurl-pay/types';
 
@@ -29,9 +29,9 @@ async function pay(song) {
         /// we need way to convert json array into raw string, decode it on wallet side and then render it.
         //https://github.com/fiatjaf/lnurl-rfc/blob/luds/06.md type of metadata that is also to be decided
 
-        return webln.sendPayment(invoice, obj)
+        return webln.sendPayment(invoice, metadata)
           .then(function(r) {
-            
+            // required this constraint to protect metadata in empty invoices as a rule
             if(r != undefined){
             document.getElementById('content').innerHTML = "YAY, thanks!";
             const timeout = document.getElementById('content')
