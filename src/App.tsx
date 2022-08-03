@@ -3,7 +3,7 @@ import BuySong from "./components/BuySong";
 import Player from "./components/Player";
 
 import { hashes } from "./assets/hashes/ImageHashes";
-import { JsonArrayConstructor } from "./assets/hashes/JSONArray";
+import { JsonConstructor } from "./assets/hashes/JSONConstructor";
 
 
 
@@ -78,10 +78,10 @@ function App() {
     })
 
     console.log(songs[currentSongIndex]);
-    JsonArrayConstructor(songs[currentSongIndex].image_hash,songs[currentSongIndex].title, songs[currentSongIndex].artist);
+    JsonConstructor(songs[currentSongIndex].image_hash,songs[currentSongIndex].title, songs[currentSongIndex].artist);
   })
 
-
+  console.log(typeof(songs));
   return (
     <div className="App">
       {/* <Player song={songs[currentSongIndex]} nextSong={songs[nextSongIndex]}></Player> */}

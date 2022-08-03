@@ -1,9 +1,9 @@
 import { requestProvider } from '../utils/webln/client';
-import { metadata }  from "../assets/hashes/JSONArray"
+import  {ExportMetadata}   from "../assets/hashes/JSONConstructor"
 import {requestInvoice} from '../lnurl-pay/request-invoice';
 import { Satoshis } from '../lnurl-pay/types';
 
-async function pay(song) {
+async function pay(song: object) {
   const tokenvalue: Satoshis = 10 as Satoshis;
   const { invoice } =
   await requestInvoice({
@@ -11,6 +11,13 @@ async function pay(song) {
     tokens: tokenvalue,
     comment: "Buy Song",
   });
+
+
+  type ObjectKey = keyof typeof song;
+
+const songSrc: string = song['src' as ObjectKey];
+
+  console.log(song);
 
   const webln = await requestProvider();
   console.log(webln);
@@ -29,12 +36,19 @@ async function pay(song) {
         /// we need way to convert json array into raw string, decode it on wallet side and then render it.
         //https://github.com/fiatjaf/lnurl-rfc/blob/luds/06.md type of metadata that is also to be decided
 
-        return webln.sendPayment(invoice, metadata)
+        // metadata prepared as json format, passed as string
+
+        const metadataString =JSON.stringify(ExportMetadata())
+
+        console.log(metadataString);
+
+        return webln.sendPayment(invoice, metadataString)
           .then(function(r) {
             // required this constraint to protect metadata in empty invoices as a rule
             if(r != undefined){
-            document.getElementById('content').innerHTML = "YAY, thanks!";
-            const timeout = document.getElementById('content')
+              const contentDiv = document.getElementById('content') as HTMLDivElement;
+            contentDiv.innerHTML = "YAY, thanks!";
+            const timeout = document.getElementById('content') as HTMLDivElement;
             setTimeout(hideElement, 5000) //milliseconds until timeout//
             function hideElement() {
               timeout.style.display = 'none'
@@ -42,8 +56,8 @@ async function pay(song) {
           console.log('done', r);
 
             const a = document.createElement('a')
-  a.href = song.src
-  a.download = song.src.split('/').pop()
+  a.href = songSrc
+  a.download = songSrc.split('/').pop() as string
   document.body.appendChild(a)
   a.click()
   document.body.removeChild(a)
@@ -71,12 +85,16 @@ async function pay(song) {
 
 // }
 
-function BuySong(props) {
+type Props = {
+  songs: object,
+  currentSongIndex: number
+}
+function BuySong({songs, currentSongIndex}: Props) {
 
   //console.log(props.songs[props.currentSongIndex]);
   
   return (
-    <div><button className="glow-on-hover position-button" onClick={() =>pay(props.songs[props.currentSongIndex])}>Buy This Song</button>
+    <div><button className="glow-on-hover position-button" onClick={() =>pay(songs[currentSongIndex as keyof object])}>Buy This Song</button>
     {/* <button onClick={()=> download(props.songs[props.currentSongIndex])}>download</button> */}
     <div id="content" className="position-text"></div>
     </div>

@@ -2,7 +2,11 @@ import React,{useState,useRef,useEffect} from 'react'
 import PlayerControls from './PlayerControls'
 import PlayerDetails from './PlayerDetails'
 
+
+
 function Player(props) {
+
+  console.log(props);
 
   const audioEl= useRef(null);
 
