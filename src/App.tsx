@@ -18,35 +18,41 @@ function App() {
       artist: "Cartoon",
       img_src: "./images/on-and-on.png",
       src: "./music/on_and_on-Cartoon.mp3",
-      image_hash: hashes.song1
+      image_hash: hashes.song1,
+      url: "https://drive.google.com/file/d/1wbGhXQBgIeB4hNlkiPDVPdGOFQqYz_Bu/view?usp=sharing"
     },
     {
       title: "Night Changes",
       artist: "One Direction",
       img_src: "./images/night_changes.png",
       src: "./music/Night_changes-one_direction.mp3",
-      image_hash: hashes.song2
+      image_hash: hashes.song2,
+      url: "https://drive.google.com/file/d/1Pn3pM-X0qurx6iG58JZv4wnwOIADpBdI/view?usp=sharing"
     },
     {
       title: "Closer ft. Halsey",
       artist: "The ChainSmokers",
       img_src: "./images/closer.png",
       src: "./music/closer_chainsmoker.mp3",
-      image_hash: hashes.song3
+      image_hash: hashes.song3,
+      url: "https://drive.google.com/file/d/1afQdxcAD9u1CbsarpAMSqcxdtCdaa6Q2/view?usp=sharing"
+
     },
     {
       title: "Faded",
       artist: "Alan Walker",
       img_src: "./images/faded.png",
       src: "./music/faded-alan_walker.mp3",
-      image_hash: hashes.song4
+      image_hash: hashes.song4,
+      url: "https://drive.google.com/file/d/1s_ZSQbgMVjnvTvPvhrShJvUe9GnVEum3/view?usp=sharing"
     },
     {
       title: "Hymn ft. Beyoncé",
       artist: "ColdPlay",
       img_src: "./images/hymm.png",
       src: "./music/Hymm-coldplay.mp3",
-      image_hash: hashes.song5
+      image_hash: hashes.song5,
+      url: "https://drive.google.com/file/d/1PBXyjcAFeAP0moX6ZYqtFpPQ2FN2X0v9/view?usp=sharing"
     },
    
     {
@@ -54,7 +60,8 @@ function App() {
       artist: "Clean Bandit",
       img_src: "./images/rockbaye.png",
       src: "./music/Rockbaye_clean_bandit.mp3",
-      image_hash: hashes.song6
+      image_hash: hashes.song6,
+      ur: "https://drive.google.com/file/d/1NJItKFDprLWIqFvSXl6SZ2jviBP9eIjx/view?usp=sharing"
     }
   ])
 
