@@ -1,13 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import AppEntryPoint from './AppEntryPoint';
+import { Router } from 'react-router-dom';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <AppEntryPoint />
   </React.StrictMode>,
   document.getElementById('root')
 );
-
-
