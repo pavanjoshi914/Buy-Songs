@@ -19,7 +19,9 @@ function App() {
       img_src: "./images/on-and-on.png",
       src: "./music/on_and_on-Cartoon.mp3",
       image_hash: hashes.song1,
-      url: "https://drive.google.com/file/d/1wbGhXQBgIeB4hNlkiPDVPdGOFQqYz_Bu/view?usp=sharing"
+      url: "https://buysong.vercel.app/onAndon",
+      contentUrl: "https://drive.google.com/file/d/1wbGhXQBgIeB4hNlkiPDVPdGOFQqYz_Bu/view?usp=sharing",
+      embedUrl: "https://docs.google.com/uc?export=download&id=1wbGhXQBgIeB4hNlkiPDVPdGOFQqYz_Bu"
     },
     {
       title: "Night Changes",
@@ -27,7 +29,9 @@ function App() {
       img_src: "./images/night_changes.png",
       src: "./music/Night_changes-one_direction.mp3",
       image_hash: hashes.song2,
-      url: "https://drive.google.com/file/d/1Pn3pM-X0qurx6iG58JZv4wnwOIADpBdI/view?usp=sharing"
+      url: "https://buysong.vercel.app/nightChanges",
+      contentUrl: "https://drive.google.com/file/d/1Pn3pM-X0qurx6iG58JZv4wnwOIADpBdI/view?usp=sharing",
+      embedUrl: "https://docs.google.com/uc?export=download&id=1Pn3pM-X0qurx6iG58JZv4wnwOIADpBdI"
     },
     {
       title: "Closer ft. Halsey",
@@ -35,7 +39,9 @@ function App() {
       img_src: "./images/closer.png",
       src: "./music/closer_chainsmoker.mp3",
       image_hash: hashes.song3,
-      url: "https://drive.google.com/file/d/1afQdxcAD9u1CbsarpAMSqcxdtCdaa6Q2/view?usp=sharing"
+      url: "https://buysong.vercel.app/closer",
+      contentUrl: "https://drive.google.com/file/d/1afQdxcAD9u1CbsarpAMSqcxdtCdaa6Q2/view?usp=sharing",
+      embedUrl: "https://docs.google.com/uc?export=download&id=1afQdxcAD9u1CbsarpAMSqcxdtCdaa6Q2"
 
     },
     {
@@ -44,7 +50,9 @@ function App() {
       img_src: "./images/faded.png",
       src: "./music/faded-alan_walker.mp3",
       image_hash: hashes.song4,
-      url: "https://drive.google.com/file/d/1s_ZSQbgMVjnvTvPvhrShJvUe9GnVEum3/view?usp=sharing"
+      url: "https://buysong.vercel.app/faded",
+      contentUrl: "https://drive.google.com/file/d/1s_ZSQbgMVjnvTvPvhrShJvUe9GnVEum3/view?usp=sharing",
+      embedUrl: "https://docs.google.com/uc?export=download&id=1s_ZSQbgMVjnvTvPvhrShJvUe9GnVEum3"
     },
     {
       title: "Hymn ft. Beyoncé",
@@ -52,7 +60,9 @@ function App() {
       img_src: "./images/hymm.png",
       src: "./music/Hymm-coldplay.mp3",
       image_hash: hashes.song5,
-      url: "https://drive.google.com/file/d/1PBXyjcAFeAP0moX6ZYqtFpPQ2FN2X0v9/view?usp=sharing"
+      url: "https://buysong.vercel.app/hymm",
+      contentUrl: "https://drive.google.com/file/d/1PBXyjcAFeAP0moX6ZYqtFpPQ2FN2X0v9/view?usp=sharing",
+      embedUrl: "https://docs.google.com/uc?export=download&id=1PBXyjcAFeAP0moX6ZYqtFpPQ2FN2X0v9"
     },
    
     {
@@ -61,7 +71,9 @@ function App() {
       img_src: "./images/rockbaye.png",
       src: "./music/Rockbaye_clean_bandit.mp3",
       image_hash: hashes.song6,
-      ur: "https://drive.google.com/file/d/1NJItKFDprLWIqFvSXl6SZ2jviBP9eIjx/view?usp=sharing"
+      url: "https://buysong.vercel.app/rockBaye",
+      contentUrl: "https://drive.google.com/file/d/1NJItKFDprLWIqFvSXl6SZ2jviBP9eIjx/view?usp=sharing",
+      embedUrl: "https://docs.google.com/uc?export=download&id=1NJItKFDprLWIqFvSXl6SZ2jviBP9eIjx"
     }
   ])
 
@@ -85,7 +97,7 @@ function App() {
     })
 
     console.log(songs[currentSongIndex]);
-    JsonConstructor(songs[currentSongIndex].image_hash,songs[currentSongIndex].title, songs[currentSongIndex].artist);
+    JsonConstructor(songs[currentSongIndex].image_hash,songs[currentSongIndex].title, songs[currentSongIndex].artist, songs[currentSongIndex].url, songs[currentSongIndex].contentUrl, songs[currentSongIndex].embedUrl);
   })
 
   console.log(typeof(songs));
